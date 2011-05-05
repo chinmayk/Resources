@@ -1,0 +1,23 @@
+How to use this: the best best is to read this stackoverflow article: http://stackoverflow.com/questions/1811730/how-do-you-work-with-a-git-repository-within-another-repository
+
+If you're being lazy, here's the important bits.
+
+
+Say you have repository PROJECT1, PROJECT2, and MEDIA...
+
+cd /path/to/PROJECT1
+git submodule add ssh://path.to.repo/MEDIA
+git commit -m "Added Media submodule"
+Repeat on the other repo...
+
+Now, the cool thing is that any time you commit changes to MEDIA, you can do this:
+
+cd /path/to/PROJECT2/MEDIA
+git pull
+cd ..
+git add MEDIA
+git commit -m "Upgraded media to version XYZ"
+This just recorded the fact that the MEDIA submodule WITHIN PROJECT2 is now at version XYZ.
+
+It gives you 100% control over what version of MEDIA each project uses. git submodules are great, but you need to experiment and learn about them. With great power comes the great chance to get bitten in the rump.
+
